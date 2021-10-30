@@ -1,5 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const Contact = require ('../model/Contacts')
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -12,5 +14,26 @@ router.get ('/api/test', (req,res,next) => {
     list :["Test 1", "Test 2 ", "Test 3"],
   })
 })
+
+router.post('/contact', (req,res,next) => {
+
+  const {name, message} = req.body;
+
+  const newContact = new Contact ({
+    name,
+    message,
+  })
+
+  newContact.save((err) => {
+    if(err) {
+      res.send("Une erreur s'est produite");
+      return ;
+    }
+
+    res.send ('Message envoyé');
+  });
+});
+
+
 
 module.exports = router;
