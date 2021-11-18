@@ -29,6 +29,7 @@ router.post('/contact', (req,res,next) => {
       res.send("Une erreur s'est produite");
       return ;
     }
+    console.log(newContact);
 
     res.send ('Message envoyé');
   });
