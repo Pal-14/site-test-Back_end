@@ -5,4 +5,4 @@ const ContactShema = mongoose.Schema ({
     message: String
 });
 
-module.exports = mongoose.model('contact',ContactShema);
+module.exports = mongoose.model('contacts',ContactShema);
